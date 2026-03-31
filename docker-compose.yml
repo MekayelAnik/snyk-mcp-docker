@@ -1,0 +1,34 @@
+services:
+  snyk-mcp:
+    image: mekayelanik/snyk-mcp:latest
+    container_name: snyk-mcp
+    environment:
+      - SNYK_TOKEN=${SNYK_TOKEN}
+      - SNYK_CFG_ORG=${SNYK_CFG_ORG:-}
+      - SNYK_MCP_PROFILE=${SNYK_MCP_PROFILE:-full}
+      - SNYK_DEBUG=${SNYK_DEBUG:-false}
+      - SNYK_DISABLE_ANALYTICS=${SNYK_DISABLE_ANALYTICS:-}
+      - PORT=8010
+      - INTERNAL_PORT=38011
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - NODE_ENV=production
+      - PROTOCOL=SHTTP
+      - ENABLE_HTTPS=false
+      - HTTP_VERSION_MODE=auto
+      - DATA_DIR=/data
+      # Optional: require Bearer token auth at HAProxy layer
+      # - API_KEY=replace-with-strong-secret
+      # Optional: CORS origins (comma-separated, or * for all)
+      # - CORS=*
+    ports:
+      - "8010:8010"
+    volumes:
+      # Mount your project directories for scanning
+      # Each subdirectory becomes a scannable project
+      - /path/to/your/projects:/data:ro
+      # Example: mount individual projects
+      # - /home/user/my-python-app:/data/my-python-app:ro
+      # - /home/user/another-project:/data/another-project:ro
+    restart: unless-stopped

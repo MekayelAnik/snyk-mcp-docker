@@ -1,0 +1,29 @@
+snyk-mcp-docker
+Copyright (C) 2026 Mohammad Mekayel Anik
+
+This Docker image packaging is licensed under the GNU General Public License v3.0 (GPLv3).
+See the LICENSE file for the full license text.
+
+================================================================================
+UPSTREAM SOFTWARE NOTICE
+================================================================================
+
+This Docker image packages the following upstream software:
+
+1. Snyk CLI (https://github.com/snyk/cli)
+   Copyright 2015 Snyk Ltd.
+   Licensed under the Apache License, Version 2.0
+   Full license: https://github.com/snyk/cli/blob/main/LICENSE
+   Note: Snyk CLI is open source but closed to external contributions.
+
+2. Supergateway (https://github.com/nicholasgasior/supergateway)
+   Licensed under the MIT License
+
+3. HAProxy (https://www.haproxy.org/)
+   Licensed under the GNU General Public License v2.0
+
+This Docker image is an UNOFFICIAL community packaging. It is NOT affiliated
+with, endorsed by, or supported by Snyk Ltd. For official Snyk support,
+visit https://support.snyk.io.
+
+The Snyk name and logo are trademarks of Snyk Ltd.
