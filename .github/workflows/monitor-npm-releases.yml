@@ -62,6 +62,7 @@ env:
   DOCKERHUB_REPO: ${{ vars.DOCKERHUB_REPO || 'mekayelanik/snyk-mcp' }}
   GHCR_REPO: ${{ vars.GHCR_REPO || format('ghcr.io/{0}/snyk-mcp', github.repository_owner) }}
   DEFAULT_PLATFORMS: ${{ vars.DEFAULT_PLATFORMS || 'linux/amd64,linux/arm64' }}
+  EXCLUDE_VERSIONS: ${{ vars.EXCLUDE_VERSIONS || '' }}
   BASE_IMAGE_DEFAULT: ${{ github.event.inputs.base_image || vars.BASE_IMAGE_DEFAULT || 'node:current-alpine' }}
   HAPROXY_IMAGE: ${{ vars.HAPROXY_IMAGE || 'haproxy:lts-alpine' }}
   EXPORT_CACHE_CONCURRENCY: '4'
@@ -204,6 +205,7 @@ jobs:
           NPM_PACKAGE="${NPM_PACKAGE}" \
           NPM_REGISTRY="${NPM_REGISTRY}" \
           MAX_VERSIONS="${MAX_VERSIONS}" \
+          EXCLUDE_VERSIONS="${EXCLUDE_VERSIONS}" \
           bash .github/scripts/fetch-releases.sh
 
   build-versions:
@@ -300,6 +302,7 @@ jobs:
 
           NOW="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
+          # Read existing state to preserve or reset latest_version_since
           EXISTING_VERSION=""
           EXISTING_SINCE=""
           if [[ -f state.json ]]; then
@@ -307,6 +310,7 @@ jobs:
             EXISTING_SINCE="$(jq -r '.latest_version_since // ""' state.json)"
           fi
 
+          # Determine latest_version_since
           if [[ "$LATEST" != "$EXISTING_VERSION" || -z "$EXISTING_SINCE" ]]; then
             SINCE="$NOW"
             echo "Version changed or first run — setting latest_version_since to $SINCE"
@@ -323,6 +327,7 @@ jobs:
 
           git add state.json
 
+          # Check if staged content differs from HEAD (handles both new and modified files)
           if git diff --cached --quiet 2>/dev/null; then
             echo "State unchanged — skipping commit"
             exit 0
@@ -354,6 +359,8 @@ jobs:
           LATEST="${{ needs.fetch-releases.outputs.latest_version }}"
           echo "Updating README to version $LATEST"
 
+          # Update the Available Tags table row with specific version
+          # Matches: | `X.Y.Z` | <anything> | Specific version
           sed -i -E "s/\| \`[0-9]+\.[0-9]+\.[0-9]+\` \|(.+)\| Specific version/| \`${LATEST}\` |\1| Specific version/" README.md
 
           if git diff --quiet README.md; then
