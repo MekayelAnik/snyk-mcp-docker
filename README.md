@@ -9,8 +9,8 @@
 <p align="center">
   <a href="https://hub.docker.com/r/mekayelanik/snyk-mcp"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/mekayelanik/snyk-mcp?style=flat-square&logo=docker"></a>
   <a href="https://hub.docker.com/r/mekayelanik/snyk-mcp"><img alt="Docker Stars" src="https://img.shields.io/docker/stars/mekayelanik/snyk-mcp?style=flat-square&logo=docker"></a>
-  <a href="https://github.com/mekayelanik/snyk-mcp-docker/pkgs/container/snyk-mcp"><img alt="GHCR" src="https://img.shields.io/badge/GHCR-ghcr.io%2Fmekayelanik%2Fsnyk-mcp-blue?style=flat-square&logo=github"></a>
-  <a href="https://github.com/mekayelanik/snyk-mcp-docker/blob/main/LICENSE"><img alt="License: GPL-3.0" src="https://img.shields.io/badge/License-GPL--3.0-blue?style=flat-square"></a>
+  <a href="https://github.com/MekayelAnik/snyk-mcp-docker/pkgs/container/snyk-mcp"><img alt="GHCR" src="https://img.shields.io/badge/GHCR-ghcr.io%2Fmekayelanik%2Fsnyk-mcp-blue?style=flat-square&logo=github"></a>
+  <a href="https://github.com/MekayelAnik/snyk-mcp-docker/blob/main/LICENSE"><img alt="License: GPL-3.0" src="https://img.shields.io/badge/License-GPL--3.0-blue?style=flat-square"></a>
   <a href="https://hub.docker.com/r/mekayelanik/snyk-mcp"><img alt="Platforms" src="https://img.shields.io/badge/Platforms-amd64%20%7C%20arm64-lightgrey?style=flat-square"></a>
   <a href="https://github.com/MekayelAnik/snyk-mcp-docker/stargazers"><img alt="GitHub Stars" src="https://img.shields.io/github/stars/MekayelAnik/snyk-mcp-docker?style=flat-square"></a>
   <a href="https://github.com/MekayelAnik/snyk-mcp-docker/forks"><img alt="GitHub Forks" src="https://img.shields.io/github/forks/MekayelAnik/snyk-mcp-docker?style=flat-square"></a>
