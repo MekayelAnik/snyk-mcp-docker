@@ -43,6 +43,15 @@ This is an unofficial, community-maintained Docker image that packages the [Snyk
 
 ---
 
+## 😎 Buy Me a Coffee ☕︎
+**Your support encourages me to keep creating/supporting my open-source projects.** If you found value in this project, you can buy me a coffee to keep me inspired.
+
+<p align="center">
+<a href="https://07mekayel07.gumroad.com/coffee" target="_blank">
+<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="217" height="60">
+</a>
+</p>
+
 ## Quick Start
 
 ### Prerequisites
@@ -266,6 +275,17 @@ This Docker image packaging is licensed under the [GNU General Public License v3
 - **HAProxy**: GNU General Public License v2.0
 
 This is an **unofficial** community packaging. It is NOT affiliated with, endorsed by, or supported by Snyk Ltd. See [NOTICE](NOTICE) for full attribution.
+
+---
+
+## 😎 Buy Me a Coffee ☕︎
+**Your support encourages me to keep creating/supporting my open-source projects.** If you found value in this project, you can buy me a coffee to keep me inspired.
+
+<p align="center">
+  <a href="https://07mekayel07.gumroad.com/coffee" target="_blank">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="217" height="60">
+  </a>
+</p>
 
 ---
 
