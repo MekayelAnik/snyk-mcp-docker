@@ -622,6 +622,13 @@ main() {
 
     trap shutdown INT TERM EXIT
 
+    # Mark all mounted repos as safe for git (ownership may differ from container user)
+    # Snyk CLI uses git internally for code scanning and project metadata
+    git config --global --add safe.directory '*'
+    if [ "$(id -u)" -eq 0 ]; then
+        su-exec node git config --global --add safe.directory '*'
+    fi
+
     start_mcp_server
     start_haproxy
 
