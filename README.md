@@ -268,7 +268,7 @@ All use the same JSON format. Configure in the respective config file:
 | Tag | Platform | Description |
 |:----|:---------|:------------|
 | `latest` | `amd64`, `arm64` | Latest stable release |
-| `1.1303.2` | `amd64`, `arm64` | Specific version |
+| `1.1304.0` | `amd64`, `arm64` | Specific version |
 
 ---
 
