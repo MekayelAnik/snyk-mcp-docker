@@ -231,6 +231,18 @@ Then tell your AI agent to scan using the mounted path:
 
 ---
 
+---
+
+### Memory & Concurrency Tuning
+
+This image embeds **mcp-proxy** (sparfenyuk/mcp-proxy) as the stdio↔HTTP bridge. Key knobs:
+
+- `MCP_PROXY_STATELESS=false` (default): one stdio backend child is shared across **all** MCP sessions, JSON-RPC-id-multiplexed. Minimal memory, no per-request fork cost.
+- `MCP_PROXY_STATELESS=true`: per-request transport instance. Use only when full session isolation is required — memory grows with concurrency.
+- `HAPROXY_FRONTEND_MAXCONN` / `HAPROXY_SERVER_MAXCONN`: HAProxy-level caps. Bound bursts so the backend cannot be flooded. Defaults of 64/16 are sensible for a single replica.
+
+> Root cause for the migration: supergateway 3.4.3 stateless mode (its default) spawned a child stdio process per POST and never reaped it (supercorp-ai/supergateway#108). mcp-proxy stateful default shares one stdio backend across sessions and reduced RSS by ~4.6× in our fleet testing.
+
 ## MCP Client Configuration
 
 ### Claude Code
@@ -298,7 +310,7 @@ This Docker image packaging is licensed under the [GNU General Public License v3
 ### Upstream Licenses
 
 - **Snyk CLI**: [Apache License 2.0](https://github.com/snyk/cli/blob/main/LICENSE) - Copyright 2015 Snyk Ltd.
-- **Supergateway**: MIT License
+- **mcp-proxy**: MIT License
 - **HAProxy**: GNU General Public License v2.0
 
 This is an **unofficial** community packaging. It is NOT affiliated with, endorsed by, or supported by Snyk Ltd. See [NOTICE](NOTICE) for full attribution.
