@@ -299,7 +299,7 @@ All use the same JSON format. Configure in the respective config file:
 | Tag | Platform | Description |
 |:----|:---------|:------------|
 | `latest` | `amd64`, `arm64` | Latest stable release |
-| `1.1306.1` | `amd64`, `arm64` | Specific version |
+| `1.1307.0-preview.91928dab0e1a2966de1d90a2f917496fa3032222` | `amd64`, `arm64` | Specific version |
 
 ---
 
